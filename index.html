@@ -1,1 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EliteNail – Premium Press-On Nails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --cream: #fdf8f4;
+      --blush: #f2ddd5;
+      --rose: #c9837a;
+      --deep: #2a1a18;
+      --nude: #e8c9c0;
+      --gold: #c4a265;
+      --muted: #9b7b75;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(253,248,244,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--nude);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--deep);
+      text-decoration: none;
+    }
+    .logo span { color: var(--rose); font-style: italic; }
+
+    nav { display: flex; gap: 36px; }
+    nav a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--deep);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--rose); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background: radial-gradient(ellipse 80% 70% at 50% 60%, #f5e0d8 0%, var(--cream) 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,131,122,0.18);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,131,122,0.09);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: pulse 6s ease-in-out 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+      50% { opacity: 0.4; transform: translate(-50%,-50%) scale(1.05); }
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--deep);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      margin: 0 auto 42px;
+      line-height: 1.75;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 44px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--deep);
+      transition: background 0.28s, color 0.28s;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+    }
+    .btn-primary:hover { background: transparent; color: var(--deep); }
+
+    /* ── SECTION TITLES ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--deep);
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    /* ── COLLECTION ── */
+    #collection {
+      padding: 100px 48px;
+      background: var(--cream);
+    }
+
+    /* Shape filter tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 52px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 10px 30px;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1.5px solid var(--nude);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: 'Jost', sans-serif;
+    }
+    .tab:hover, .tab.active {
+      background: var(--deep);
+      border-color: var(--deep);
+      color: var(--white);
+    }
+
+    /* Product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(201,131,122,0.12);
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(42,26,24,0.1);
+    }
+    .product-card.hidden { display: none; }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--blush);
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .card-img-wrap img { transform: scale(1.06); }
+
+    .badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      padding: 5px 14px;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .badge-sale { background: var(--rose); color: var(--white); }
+    .badge-new  { background: var(--gold); color: var(--white); }
+
+    .card-body {
+      padding: 22px 24px 26px;
+    }
+
+    .card-shape {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .card-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .price-sale {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--rose);
+    }
+    .price-orig {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .price-only {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--deep);
+    }
+
+    .btn-buy {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      text-align: center;
+      background: var(--deep);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--deep);
+      transition: background 0.25s, color 0.25s;
+      font-family: 'Jost', sans-serif;
+    }
+    .btn-buy:hover { background: transparent; color: var(--deep); }
+
+    /* ── SHAPE SECTIONS ── */
+    .shape-section {
+      padding: 90px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .shape-section + .shape-section {
+      padding-top: 0;
+    }
+
+    .shape-divider {
+      background: var(--blush);
+    }
+    .shape-divider .shape-section {
+      max-width: 100%;
+      padding: 90px 48px;
+    }
+
+    /* ── BANNER STRIP ── */
+    .banner {
+      background: var(--deep);
+      color: var(--white);
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .banner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0.9;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.55);
+      padding: 48px 48px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+    }
+    .footer-logo span { color: var(--rose); font-style: italic; }
+
+    .social-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .social-link:hover { color: var(--rose); }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .footer-disc {
+      font-size: 0.68rem;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 500px;
+      opacity: 0.45;
+    }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      opacity: 0.3;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      nav { gap: 20px; }
+      #collection, .shape-section { padding: 72px 20px; }
+      .shape-divider .shape-section { padding: 72px 20px; }
+    }
+    @media (max-width: 480px) {
+      nav { display: none; }
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">Elite<span>Nail</span></a>
+  <nav>
+    <a href="#collection">Collection</a>
+    <a href="#oval">Oval</a>
+    <a href="#square">Square</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative;z-index:2;">
+    <p class="hero-tag">Premium Press-On Nails</p>
+    <h1>Nails that<br/><em>speak luxury</em></h1>
+    <p>Salon-quality press-on nails delivered to your door. Shop our curated collection of oval and square styles.</p>
+    <a href="#collection" class="btn-primary">Shop Collection</a>
+  </div>
+</section>
+
+<!-- FULL COLLECTION -->
+<section id="collection">
+  <div class="section-header">
+    <span class="section-tag">All Styles</span>
+    <h2 class="section-title">Our <em>Collection</em></h2>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterProducts('all', this)">All</button>
+    <button class="tab" onclick="filterProducts('oval', this)">Oval</button>
+    <button class="tab" onclick="filterProducts('square', this)">Square</button>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card" data-shape="oval">
+      <div class="card-img-wrap">
+        <img src="https://m.media-amazon.com/images/I/61UXdxWWeYL._SL1500_.jpg" alt="Oval Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Oval</p>
+        <div class="card-prices">
+          <span class="price-only">$7.99</span>
+        </div>
+        <a href="https://amzn.to/3PdTOql" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card" data-shape="oval">
+      <div class="card-img-wrap">
+        <span class="badge badge-sale">Sale</span>
+        <img src="https://m.media-amazon.com/images/I/61Nm-yI-kBL._SL1500_.jpg" alt="Oval Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Oval</p>
+        <div class="card-prices">
+          <span class="price-sale">$7.99</span>
+          <span class="price-orig">$9.99</span>
+        </div>
+        <a href="https://amzn.to/47e2eED" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card" data-shape="oval">
+      <div class="card-img-wrap">
+        <img src="https://m.media-amazon.com/images/I/7119hfOa8xL._SL1500_.jpg" alt="Oval Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Oval</p>
+        <div class="card-prices">
+          <span class="price-only">$7.99</span>
+        </div>
+        <a href="https://amzn.to/4cM817X" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="product-card" data-shape="square">
+      <div class="card-img-wrap">
+        <img src="https://m.media-amazon.com/images/I/71WAGqSdGsL._SL1500_.jpg" alt="Square Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Square</p>
+        <div class="card-prices">
+          <span class="price-only">$7.99</span>
+        </div>
+        <a href="https://amzn.to/4sYhTQT" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 5 -->
+    <div class="product-card" data-shape="square">
+      <div class="card-img-wrap">
+        <img src="https://m.media-amazon.com/images/I/61OTddwT7yL._SL1500_.jpg" alt="Square Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Square</p>
+        <div class="card-prices">
+          <span class="price-only">$9.99</span>
+        </div>
+        <a href="https://amzn.to/4s4wh9S" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+    <!-- PRODUCT 6 -->
+    <div class="product-card" data-shape="square">
+      <div class="card-img-wrap">
+        <img src="https://m.media-amazon.com/images/I/61OTddwT7yL._SL1500_.jpg" alt="Square Press-On Nails" loading="lazy"/>
+      </div>
+      <div class="card-body">
+        <p class="card-shape">Square</p>
+        <div class="card-prices">
+          <span class="price-only">$9.99</span>
+        </div>
+        <a href="https://amzn.to/4s4wh9S" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+      </div>
+    </div>
+
+  </div><!-- /product-grid -->
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="banner">
+  <p>"Your nails are the jewels, not the tools."</p>
+</div>
+
+<!-- OVAL SECTION -->
+<section id="oval">
+  <div class="shape-section">
+    <div class="section-header">
+      <span class="section-tag">Shape Guide</span>
+      <h2 class="section-title"><em>Oval</em> Nails</h2>
+    </div>
+    <div class="product-grid" id="ovalGrid">
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/61UXdxWWeYL._SL1500_.jpg" alt="Oval Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Oval</p>
+          <div class="card-prices"><span class="price-only">$7.99</span></div>
+          <a href="https://amzn.to/3PdTOql" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <span class="badge badge-sale">Sale</span>
+          <img src="https://m.media-amazon.com/images/I/61Nm-yI-kBL._SL1500_.jpg" alt="Oval Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Oval</p>
+          <div class="card-prices">
+            <span class="price-sale">$7.99</span>
+            <span class="price-orig">$9.99</span>
+          </div>
+          <a href="https://amzn.to/47e2eED" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/7119hfOa8xL._SL1500_.jpg" alt="Oval Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Oval</p>
+          <div class="card-prices"><span class="price-only">$7.99</span></div>
+          <a href="https://amzn.to/4cM817X" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SQUARE SECTION -->
+<div class="shape-divider" id="square">
+  <div class="shape-section">
+    <div class="section-header">
+      <span class="section-tag">Shape Guide</span>
+      <h2 class="section-title"><em>Square</em> Nails</h2>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/71WAGqSdGsL._SL1500_.jpg" alt="Square Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Square</p>
+          <div class="card-prices"><span class="price-only">$7.99</span></div>
+          <a href="https://amzn.to/4sYhTQT" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/61OTddwT7yL._SL1500_.jpg" alt="Square Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Square</p>
+          <div class="card-prices"><span class="price-only">$9.99</span></div>
+          <a href="https://amzn.to/4s4wh9S" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img-wrap">
+          <img src="https://m.media-amazon.com/images/I/61OTddwT7yL._SL1500_.jpg" alt="Square Nails" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <p class="card-shape">Square</p>
+          <div class="card-prices"><span class="price-only">$9.99</span></div>
+          <a href="https://amzn.to/4s4wh9S" target="_blank" rel="noopener noreferrer nofollow" class="btn-buy">Buy on Amazon</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Elite<span>Nail</span></div>
+
+  <div class="social-links">
+    <!-- Pinterest -->
+    <a href="https://www.pinterest.com/elitenailhub/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Pinterest">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+      </svg>
+      Pinterest
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/elite_nailhub/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@elitenailhub?lang=en-GB" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.14a8.18 8.18 0 0 0 4.78 1.52V7.22a4.85 4.85 0 0 1-1.01-.53z"/>
+      </svg>
+      TikTok
+    </a>
+  </div>
+
+  <p class="footer-disc">
+    EliteNail is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
+  </p>
+
+  <p class="footer-copy">© 2025 EliteNail. All rights reserved.</p>
+</footer>
+
+<script>
+  function filterProducts(shape, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#productGrid .product-card').forEach(card => {
+      if (shape === 'all' || card.dataset.shape === shape) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // Smooth fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(24px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s';
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
